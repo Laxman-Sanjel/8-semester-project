@@ -1,0 +1,100 @@
+{% include "link.html" %} 
+{% include "Header.html" %}
+    <div class="card-body mt-5">
+    {% for msg in messages %}
+    <h6 class="alert alert-success">{{msg}}</h6>      
+  {% endfor %}
+    
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>SN</th>
+      <th scope="col">Name</th>
+      <th scope="col">Number</th>
+      <th scope="col">Location</th>
+      <th scope="col">Image</th>
+      <th scope="col">Message</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in accept %}
+    <tr>
+      <td>{{a.id}}</td>
+      <td>{{a.name}}</td>
+      <td>{{a.number}}</td>
+      <td>{{a.location}}</td>
+      <td>{{a.image}}</td>
+      <td>{{a.message}}</td>
+      <td>{{a.status}}</td>
+      <td>
+            <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#exampleModal">
+              Further_Tretment
+            </button>
+            </div>
+      </td>    
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="exampleModalLabel">ABOUT_TRETEMENT</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST"action="{% url 'Treatment' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="Pet_Id" class="col-form-label font-weight-bold">Pet_Id</label>
+                <input type="text" class="form-control" id="name"name="pet_id"placeholder="Enter Id..">
+              </div>
+              <div class="form-group">
+                <label class="col-form-label font-weight-bold">Gender</label>
+                <div class="col-sm-12">
+                  <select class="form-control"name="gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+            <div class="form-group">
+              <label for="Assign_Doctor" class="col-form-label font-weight-bold">Assign_Doctor:</label>
+              <input type="text" class="form-control" id="name"name="assign_doctor"placeholder="Enter Dr Name..">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label font-weight-bold">Condition</label>
+              <div class="col-sm-12">
+                <select class="form-control"name="condition">
+                  <option>Normal</option>
+                  <option>Complicated</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label font-weight-bold">Discharge_Date</label>
+              <input type="date"class="form-control" id="contact"name="discharge_date"placeholder="Enter Discharge_Date...">
+            </div>
+            {% comment %} <div class="form-group">
+              <label for="message-text" class="col-form-label font-weight-bold">Total_Cost</label>
+              <input type="number"class="form-control" id="contact"name="date"placeholder="Enter Discharge_Date...">
+            </div> {% endcomment %}
+            
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+

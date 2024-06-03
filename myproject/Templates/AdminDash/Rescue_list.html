@@ -1,0 +1,41 @@
+{% include "link.html" %} 
+{% include "Header.html" %}
+    <div class="card-body mt-5">
+    {% for msg in messages %}
+    <h6 class="alert alert-success">{{msg}}</h6>
+      
+  {% endfor %}
+    
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>SN</th>
+      <th scope="col">Name</th>
+      <th scope="col">Number</th>
+      <th scope="col">Location</th>
+      <th scope="col">Image</th>
+      <th scope="col">Message</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for records in R %}
+    <tr>
+      <td>{{records.id}}</td>
+      <td>{{records.name}}</td>
+      <td>{{records.number}}</td>
+      <td>{{records.location}}</td>
+      <td>{{records.image}}</td>
+      <td>{{records.message}}</td>
+      <td>{{records.status}}</td>
+      <td>
+      <a class="btnRoomDelete btn btn-primary"href="/Rescue_Actions/{{records.id}}">Views</a>
+      </td>    
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+

@@ -1,0 +1,72 @@
+{% include "link.html" %} 
+{% include "Header.html" %}
+
+<div class="col-10 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-description text-primary" style="text-align:center;">Update Oder Request</h4>
+        <form method="POST"action="{% url 'updateorder' orderreq.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">User_Id:</label>
+              <input type="number" class="form-control" value="{{orderreq.user_id}}" name="name"placeholder="Enter User_Id..">
+            </div> 
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Address:</label>
+              <input type="text"class="form-control" value="{{orderreq.address}}" name="address"placeholder="Enter Address...">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Phone:</label>
+              <input type="number"class="form-control"value="{{orderreq.phone}}" name="phone"placeholder="Enter Phone...">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">payment_method:</label>
+              <input type="text"class="form-control" value="{{orderreq.payment_method}}" name="payment_method"placeholder="Enter Payment Method..">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Name:</label>
+              <input type="text"class="form-control" value="{{orderreq.name}}" name="name"placeholder="Enter name..">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Quantity:</label>
+              <input type="number"class="form-control" value="{{orderreq.quantity}}" name="quantity"placeholder="Enter Quantity..">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Payment_Status:</label>
+              <input type="text"class="form-control" value="{{orderreq.payment_completed}}" name="payment_completed"placeholder="Enter status..">
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Price:</label>
+                <input type="number"class="form-control" value="{{orderreq.price}}" name="price"placeholder="Enter price..">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Image:</label>
+                <input type="file"class="form-control" value="{{orderreq.image}}" name="image"placeholder="Enter Image..">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Pin_Code:</label>
+                <input type="number"class="form-control" value="{{orderreq.pincode}}" name="pincode" placeholder="Enter pincode..">
+              </div>
+            <div class="form-group">
+              <label for="exampleTextarea1">Order_Status</label>
+                    <select class="form-control" name="order_status">
+                      <option>"{{orderreq.order_status}}"</option>
+                      <option>Order Received</option>
+                      <option>Order Canceled</option>
+                      <option>Order Processing</option>
+                      <option>On the way</option>
+                    </select>
+              </div>
+             <div class="form-group">
+              <label for="message-text" class="col-form-label">pid:</label>
+              <input type="text"class="form-control" value="{{orderreq.pid_id}}" name="pid"placeholder="Enter product id">
+            </div>
+        </div> 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+       
+      </div>
+    </div>
+  </div> 

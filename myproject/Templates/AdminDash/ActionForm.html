@@ -1,0 +1,50 @@
+{% include "link.html" %} 
+{% include "Header.html" %}
+
+<div class="col-10 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-description text-primary" style="text-align:center;">Details About Rescue</h4>
+        <form method="POST"action="/Update/{{Rr.id}}" enctype="multipart/form-data">
+            {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputName1">Name</label>
+            <input value="{{Rr.name}}" type="text" class="form-control" name="name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail3">Number</label>
+            <input value="{{Rr.number}}"type="number" class="form-control" name="number" placeholder="Number">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">Location</label>
+            <input value="{{Rr.location}}" type="text" class="form-control" name="location" placeholder="Location">
+          </div>
+          <div class="form-group">
+            <label>File upload</label>
+            <input type="file" name="image" class="file-upload-default">
+            <div class="input-group col-xs-12">
+              <input value="{{Rr.image}}" type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+              <span class="input-group-append">
+                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleTextarea1">Message</label>
+            <textarea class="form-control" name="message" rows="4">"{{Rr.message}}"</textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleTextarea1">Action</label>
+                  <select class="form-control" name="status">
+                    <option>{{Rr.status}}</option>
+                    <option>Accept</option>
+                    <option>Reject</option>
+                  </select>
+            </div>
+
+          <button type="submit" class="btn btn-primary mr-2">Update</button>
+          <button class="btn btn-light">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>

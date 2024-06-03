@@ -1,0 +1,49 @@
+{% comment %} {% load static %}
+{% load cart_tag %}
+{% include "UserDashboard/header.html" %}
+
+        <form method="POSt" action="{% url 'checkout' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Phone:</label>
+            <input type="number" class="form-control" name="phone" id="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Address:</label>
+            <input type="text" class="form-control" name="address" id="address" required>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Pincode:</label>
+            <input type="number" class="form-control" name="pincode" id="pincode" required>
+          </div>
+          <input type="text" name="pid" value="{{ pid.id }}">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Payment:</label>
+              <select class="form-control"name="payment_method">
+                <option>Cash On Delevery</option>
+                <option>Esewa</option>
+              </select>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Order_Now</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> 
+{% include "UserDashboard/footer.html" %}
+<a href="#" class="btn btn-primary py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/lib1/easing/easing.min.js"></script>
+    <script src="/static/lib1/waypoints/waypoints.min.js"></script>
+    <script src="/static/lib1/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/static/js1/main.js"></script>
+
+   {% endcomment %}

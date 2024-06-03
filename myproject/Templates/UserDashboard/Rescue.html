@@ -1,0 +1,77 @@
+{% include "UserDashboard/header.html" %}
+{% for msg in messages %}
+    <h6 class="alert alert-success">{{msg}}</h6>
+    {% endfor %}
+<div class="container-fluid pt-5">  
+    <div class="container">
+        <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+            <h6 class="text-primary text-uppercase">Contact Us</h6>
+            <h1 class="display-5 text-uppercase mb-0">Please Feel Free To Contact Us</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-7">
+                <form method="POST"action="{% url 'AddRescue' %}">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="Your Name" name="name" style="height: 55px;">
+                        </div>
+                        <div class="col-12">
+                            <input type="number" class="form-control bg-light border-0 px-4" placeholder="Your Number" name="number" style="height: 55px;">
+                        </div>
+                        <div class="col-12">
+                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="location" name="location" style="height: 55px;">
+                        </div>
+                        {% comment %} <div class="col-12">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3564.8540415569632!2d87.98874157528665!3d26.68515017678348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e5ba21cb8d9f1b%3A0xaf7b988ddb78b75e!2sShanischare%20Bazar!5e0!3m2!1sen!2snp!4v1696508340714!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+                        </div> {% endcomment %}
+                        <div class="col-12">
+                            <textarea class="form-control bg-light border-0 px-4 py-3" rows="8" placeholder="Message" name="message"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <input type="file" class="form-control bg-light border-0 px-4 py-3" rows="8" placeholder="Images" name="image">
+                        </div>
+                        <div class="col-12">
+                            <input type="hidden" class="form-control bg-light border-0 px-4" value="pending" name="status" style="height: 55px;">
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-5">
+                <div class="bg-light mb-5 p-5">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-geo-alt fs-1 text-primary me-3"></i>
+                        <div class="text-start">
+                            <h6 class="text-uppercase mb-1">Our Office</h6>
+                            <span>123 Street, Shanischare, Jhapa</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-envelope-open fs-1 text-primary me-3"></i>
+                        <div class="text-start">
+                            <h6 class="text-uppercase mb-1">Email Us</h6>
+                            <span>AnimalCare@example.com</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
+                        <div class="text-start">
+                            <h6 class="text-uppercase mb-1">Call Us</h6>
+                            <span>+012 345 6789</span>
+                        </div>
+                    </div>
+                    <div>
+                        <iframe class="position-relative w-100"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3564.8540415569632!2d87.98874157528665!3d26.68515017678348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e5ba21cb8d9f1b%3A0xaf7b988ddb78b75e!2sShanischare%20Bazar!5e0!3m2!1sen!2snp!4v1696508340714!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            frameborder="0" style="height: 205px; border:0;" allowfullscreen="" aria-hidden="false"
+                            tabindex="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "UserDashboard/footer.html" %}

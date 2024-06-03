@@ -1,0 +1,105 @@
+{% include "link.html" %} 
+{% load cart_tag %}  
+ {% comment %} <link rel="stylesheet" href="/static/vendors/css/vendor.bundle.base.css"> {% endcomment %}
+ {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+ <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.nostyle.js">
+</script> {% endcomment %}
+{% include "Header.html" %}
+    <div class="card-body mt-5">
+    {% for msg in messages %}
+    <h6 class="alert alert-success">{{msg}}</h6>
+      
+  {% endfor %}
+    
+      <div class="card-header d-flex justify-content-end">
+        <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#exampleModal">
+          For Sales
+        </button>
+        </div>
+        
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>SN</th>
+      <th scope="col">Breed</th>
+      <th scope="col">Purchase_Price</th>
+      <th scope="col">Sales_Amount</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for record in sl %} 
+    <tr>
+      <td>{{record.id}}</td>
+      <td>{{record.breed}}</td>
+      <td>{{record.breed.price}}</td>
+      <td>{{record.breed.profit}}</td>
+      {% comment %} <td>{{ record.breed|default:0|floatformat }} * {{ record.profit_percentage|default:0|floatformat }}</td> {% endcomment %}
+      {% comment %} <td>{{ record.price|multiply:record.profit_percentage }}</td> {% endcomment %}
+      <td>
+      <a class="btnRoomDelete btn btn-danger" href="{% url 'Delete_Data' record.id %}">Delete</a>
+      </td>    
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">For Sales</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST"action="{% url 'sales_amt' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Breed:</label>
+            <select class="form-control" id="breed" name="breed">
+                {% for pro in sp %}
+                    <option value="{{ pro.id }}">{{ pro.name }}</option>
+                {% endfor %}
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Profit_Percentage:</label>
+            <input type="number"class="form-control" id="profit"name="profit"placeholder="Enter Profit %...">
+          </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

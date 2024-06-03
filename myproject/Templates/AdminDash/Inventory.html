@@ -1,0 +1,45 @@
+{% load multiply_filter %}
+{% include "Header.html" %}
+<div class="col-10 grid-margin">
+    <div class="card-body mt-5">
+    {% for msg in messages %}
+    <h6 class="alert alert-success">{{msg}}</h6>    
+  {% endfor %}
+      <div class="card-header d-flex justify-content-end">
+        <a class="btn btn-primary" href="{% url "Product_form" %}">Add</a>
+        </div>
+        
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Breed</th>
+      <th scope="col">Total_Quantity</th>
+      <th scope="col">Sales_Quantity</th>
+      <th scope="col">stock_Quantity</th>
+      <th scope="col">Sales_Amount</th>
+      <th scope="col">Purchase_Amt(Per)</th>
+      <th scope="col">Profit/L</th>
+      <th scope="col">Date</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for records in pr %}
+    <tr>
+      <td>{{records.pid.name}}</td>
+      <td>{{records.pid.quantity}}</td>
+      <td>{{records.quantity}}</td>
+      <td>{{records.pid.quantity|minus:records.quantity}}</td>
+      <td>{{records.pid.profit}}
+      <td>{{records.pid.price}}
+      <td>{{records.pid.profit|minus:records.pid.price}}</td>
+      <td>{{records.date}}</td>
+      <td>
+      <a class="btnRoomDelete btn btn-danger" href="#" >Delete</a>
+      </td>    
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+

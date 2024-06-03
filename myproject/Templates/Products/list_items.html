@@ -1,0 +1,48 @@
+
+{% include "Header.html" %}
+    <div class="card-body mt-5">
+    {% for msg in messages %}
+    <h6 class="alert alert-success">{{msg}}</h6>    
+  {% endfor %}
+      <div class="card-header d-flex justify-content-end">
+        <a class="btn btn-primary" href="{% url "Product_form" %}">Add</a>
+        </div>
+        
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>SN</th>
+      <th scope="col">B_name</th>
+      <th scope="col">Origin</th>
+      <th scope="col">Gender</th>
+      <th scope="col">lifespan</th>
+      <th scope="col">Suppliers</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Sales Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for records in p %}
+    <tr>
+      <td>{{records.id}}</td>
+      <td>{{records.name}}</td>
+      <td>{{records.origin}}</td>
+      <td>{{records.gender}}</td>
+      <td>{{records.lifespan}}</td>
+      <td>{{records.suppliers}}</td>
+      <td>{{records.quantity}}</td>
+      <td>{{records.profit}}</td>
+      
+      <td>
+        <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#exampleModal">
+          Edit
+        </button>
+        <a class="btnRoomDelete btn btn-danger" href="/del_product/{{records.id}}" >Delete</a>
+      </td>    
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+

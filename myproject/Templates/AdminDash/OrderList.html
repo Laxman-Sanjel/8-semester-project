@@ -1,0 +1,70 @@
+{% include "link.html" %} 
+{% include "Header.html" %}
+<div class="col-10 grid-margin">
+    <div class="card-body mt-5">
+    {% for msg in messages %}
+    <h6 class="alert alert-success">{{msg}}</h6>   
+  {% endfor %}
+        
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Address</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Payment_Method</th>
+              <th scope="col">Payment_Status</th>
+              <th scope="col">Breed</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Order_Status</th>
+              <th scope="col">Date</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for records in order %}
+            <tr>
+              <td>{{records.address}}</td>
+              <td>{{records.phone}}</td>
+              <td>{{records.payment_method}}</td>
+              <td>{{records.payment_completed}}</td>
+              <td>{{records.name}}</td>
+              <td>{{records.quantity}}</td>
+              <td>{{records.order_status}}</td>
+              <td>{{records.date}}</td>
+              <td>
+                  <a class="btn btn-primary" href="{% url 'updateform' records.id %}">
+                    Update
+                  </a>
+                {% comment %} <a class="btnRoomDelete btn btn-danger" href="#" >Delete</a> {% endcomment %}
+              </td>    
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+
+<!-- Modal -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
